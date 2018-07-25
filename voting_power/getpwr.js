@@ -36,14 +36,14 @@ if(location.hostname.match(/steemit.com/i) && document.getElementById("content")
     node.id = "pwr";
     node.innerHTML = "<img src='./icon.png' id='pwr_img' style='height:20px! important; margin-left:10px;' title=''>";
     document.getElementsByClassName("small-7 large-4 columns Header__buttons")[0].appendChild(node);
-
     get_pwr();
 }
+
 
 document.addEventListener('click', function(e) {
     var target = e.target
     currentItem = target.parentElement;
-    if (currentItem.className!=null && currentItem.className == "entry-title") 
+    if (currentItem.id == "pwr") 
     {
         get_pwr();
     }
