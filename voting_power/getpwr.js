@@ -34,7 +34,7 @@ if(location.hostname.match(/steemit.com/i) && document.getElementById("content")
 {
     var node = document.createElement("div");
     node.id = "pwr";
-    node.innerHTML = "<img src='./icon.png' id='pwr_img' style='height:20px! important; margin-left:10px;' title=''>";
+    node.innerHTML = "<img src="+bat1+" id='pwr_img' style='height:20px! important; margin-left:10px;' title=''>";
     document.getElementsByClassName("small-7 large-4 columns Header__buttons")[0].appendChild(node);
     get_pwr();
 }
