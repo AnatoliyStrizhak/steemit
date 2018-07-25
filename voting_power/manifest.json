@@ -1,0 +1,24 @@
+{
+    "manifest_version": 2,
+
+    "name": "Steemit - Voting Power",
+    "description": "Adds voting power image to Steemit site header",
+    "version": "1.0",
+
+    "icons": { "48": "steemit.png" },
+
+
+    "content_scripts": [
+        {
+            "matches": ["*://steemit.com/*"],
+            "js": ["steem.min.js","getpwr.js"]
+        }
+    ],
+
+    "permissions": ["tabs", "*://steemit.com/*"],
+
+    "browser_action": {
+        "default_icon": "steemit.png",
+        "default_title": "Steemit Voting power"
+    }
+}
