@@ -10,12 +10,12 @@
 
     "content_scripts": [
         {
-            "matches": ["*://steemit.com/*"],
+            "matches": ["*://steemit.com/*", "*://whaleshares.io/*"],
             "js": ["steem.min.js","getpwr.js"]
         }
     ],
 
-    "permissions": ["tabs", "*://steemit.com/*"],
+    "permissions": ["tabs", "*://steemit.com/*", "*://whaleshares.io/*"],
 
     "browser_action": {
         "default_icon": "steemit.png",
