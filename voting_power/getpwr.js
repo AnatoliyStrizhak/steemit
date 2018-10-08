@@ -16,7 +16,31 @@ function get_pwr()
 
     steem.api.getAccounts(['astrizak'], function(err, response){
 
-        var res=response[0]['voting_power']/100;
+        account = response[0];
+
+        if(chain=="wls")
+        {
+            var secondsago = (new Date - new Date(account.last_vote_time + "Z")) / 1000;
+            var vpow = account.voting_power + (10000 * secondsago / 432000);
+            var res = Math.min(vpow / 100, 100).toFixed();
+        }
+        else
+        {
+
+        //Thanks to Steemit user @howo
+        //https://github.com/drov0/steemsnippets/blob/master/steemjs/voting_power/voting_power.js
+            const totalShares = parseFloat(account.vesting_shares) + parseFloat(account.received_vesting_shares) - parseFloat(account.delegated_vesting_shares) - parseFloat(account.vesting_withdraw_rate);
+
+            const elapsed = Math.floor(Date.now() / 1000) - account.voting_manabar.last_update_time;
+            const maxMana = totalShares * 1000000;
+            let currentMana = parseFloat(account.voting_manabar.current_mana) + elapsed * maxMana / 432000;
+
+            if (currentMana > maxMana) {
+                currentMana = maxMana;
+            }
+
+            res = (currentMana * 100 / maxMana).toFixed();
+        }
 
         if(res<55)
         {
