@@ -9,7 +9,8 @@ function get_pwr()
 
     if(chain=="wls")
     {
-        steem.api.setOptions({ url: 'wss://whaleshares.io/ws' });
+        //steem.api.setOptions({ url: 'wss://whaleshares.io/ws' });
+        steem.api.setOptions({ url: 'https://rpc.wls.services/' });
         steem.config.set('address_prefix', 'WLS');
         steem.config.set('chain_id', 'de999ada2ff7ed3d3d580381f229b40b5a0261aec48eb830e540080817b72866');
     }
