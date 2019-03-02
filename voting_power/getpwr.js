@@ -6,16 +6,16 @@ var chain="";
 
 function get_pwr()
 {
-
-    if(chain=="wls")
+    chrome.storage.sync.get(['usr'], function(result)
     {
-        //steem.api.setOptions({ url: 'wss://whaleshares.io/ws' });
-        steem.api.setOptions({ url: 'https://rpc.wls.services/' });
-        steem.config.set('address_prefix', 'WLS');
-        steem.config.set('chain_id', 'de999ada2ff7ed3d3d580381f229b40b5a0261aec48eb830e540080817b72866');
-    }
+        if(chain=="wls")
+        {
+            steem.api.setOptions({ url: 'wss://wls.kennybll.com' });
+            steem.config.set('address_prefix', 'WLS');
+            steem.config.set('chain_id', 'de999ada2ff7ed3d3d580381f229b40b5a0261aec48eb830e540080817b72866');
+        }
 
-    steem.api.getAccounts(['astrizak'], function(err, response){
+        steem.api.getAccounts([result.usr], function(err, response){
 
         account = response[0];
 
@@ -48,12 +48,12 @@ function get_pwr()
             document.getElementById('pwr_img').src = bat3;
         }
 
-        if(res>60)
+        if(res>55)
         {
             document.getElementById('pwr_img').src = bat2;
         }
 
-        if(res>90)
+        if(res>70)
         {
             document.getElementById('pwr_img').src = bat1;
         }
@@ -61,6 +61,9 @@ function get_pwr()
         document.getElementById('pwr_img').title = res+"%";
 
     });
+
+});
+
 }
 
 
@@ -74,13 +77,14 @@ if(location.hostname.match(/steemit.com/i) && document.getElementById("content")
     get_pwr();
 }
 
-if(location.hostname.match(/whaleshares.io/i) && document.getElementById("content") && document.getElementsByClassName("toggle-menu Header__hamburger"))
+
+if(location.hostname.match(/whaleshares.io/i) && document.getElementById("app"))
 {
     chain="wls";
     var node = document.createElement("div");
     node.id = "pwr";
-    node.innerHTML = "<img src="+bat1+" id='pwr_img' style='height:20px! important; margin-top:22px; padding-right:10px;' title=''>";
-    document.getElementsByClassName("expanded row")[0].appendChild(node);
+    node.innerHTML = "<img src="+bat1+" id='pwr_img' style='height:20px! important; padding-right:15px; padding-left:15px;' title=''>";
+    document.getElementsByClassName("Topnav__menu-container")[0].appendChild(node);
     get_pwr();
 }
 

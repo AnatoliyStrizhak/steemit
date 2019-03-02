@@ -2,8 +2,8 @@
     "manifest_version": 2,
 
     "name": "Steemit - Voting Power",
-    "description": "Adds voting power image to Steemit site header",
-    "version": "1.0",
+    "description": "Adds voting power image to Steemit.com and Whaleshares.io site header",
+    "version": "1.1",
 
     "icons": { "48": "steemit.png" },
 
@@ -15,10 +15,12 @@
         }
     ],
 
-    "permissions": ["tabs", "*://steemit.com/*", "*://whaleshares.io/*"],
+    "permissions": ["tabs", "storage", "*://steemit.com/*", "*://whaleshares.io/*"],
+
 
     "browser_action": {
         "default_icon": "steemit.png",
-        "default_title": "Steemit Voting power"
+        "default_title": "Steemit Voting power",
+        "default_popup": "popup.html"
     }
 }
