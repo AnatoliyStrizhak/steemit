@@ -10,7 +10,7 @@ function get_pwr()
     {
         if(chain=="wls")
         {
-            steem.api.setOptions({ url: 'wss://wls.kennybll.com' });
+            steem.api.setOptions({ url: 'https://wls.kennybll.com/' });
             steem.config.set('address_prefix', 'WLS');
             steem.config.set('chain_id', 'de999ada2ff7ed3d3d580381f229b40b5a0261aec48eb830e540080817b72866');
         }
@@ -85,6 +85,16 @@ if(location.hostname.match(/whaleshares.io/i) && document.getElementById("app"))
     node.id = "pwr";
     node.innerHTML = "<img src="+bat1+" id='pwr_img' style='height:20px! important; padding-right:15px; padding-left:15px;' title=''>";
     document.getElementsByClassName("Topnav__menu-container")[0].appendChild(node);
+    get_pwr();
+}
+
+if(location.hostname.match(/wls.fintehru.org/i) && document.getElementById("content") && document.getElementsByClassName("toggle-menu Header__hamburger"))
+{
+    chain="wls";
+    var node = document.createElement("div");
+    node.id = "pwr";
+    node.innerHTML = "<img src="+bat1+" id='pwr_img' style='height:20px! important; margin-top:22px; padding-right:10px;' title=''>";
+    document.getElementsByClassName("expanded row")[0].appendChild(node);
     get_pwr();
 }
 

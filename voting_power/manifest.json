@@ -10,12 +10,12 @@
 
     "content_scripts": [
         {
-            "matches": ["*://steemit.com/*", "*://whaleshares.io/*"],
+            "matches": ["*://steemit.com/*", "*://whaleshares.io/*", "*://wls.fintehru.org/*"],
             "js": ["steem.min.js","getpwr.js"]
         }
     ],
 
-    "permissions": ["tabs", "storage", "*://steemit.com/*", "*://whaleshares.io/*"],
+    "permissions": ["tabs", "storage", "*://steemit.com/*", "*://whaleshares.io/*", "*://wls.fintehru.org/*"],
 
 
     "browser_action": {
